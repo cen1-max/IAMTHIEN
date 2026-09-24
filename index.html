@@ -3,152 +3,632 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thư Mời Tốt Nghiệp</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
-        /* Nền động */
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(45deg, #8e44ad, #3498db, #e67e22, #2ecc71);
-            background-size: 300% 300%;
-            animation: gradientBG 6s infinite;
-            font-family: 'Great Vibes', cursive;
-        }
+    <title>DEAR XIAO GONG ZHU!!! ✦</title>
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        .container {
-            text-align: center;
-            z-index: 10;
-            position: relative;
-            color: #fff;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 
-        .title {
-            font-size: 80px;
-            color: #ffeaa7;
-            text-shadow: 0 0 30px #ffeaa7, 0 0 50px #e67e22;
-        }
-
-        .link {
-            margin-top: 30px;
-            display: inline-block;
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-            text-decoration: none;
-            background: #6c5ce7;
-            padding: 15px 30px;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .link:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px #00cec9;
-            background: #00cec9;
-        }
-
-        /* Vật thể rơi */
-        .falling-item {
-            position: absolute;
-            top: -100px;
-            animation: fall linear infinite;
-            will-change: transform;
-            cursor: pointer;
-        }
-
-        @keyframes fall {
-            to { transform: translateY(110vh); }
-        }
-
-        /* Hiệu ứng vỡ */
-        .fragment {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background-size: cover;
-            animation: explode 1s ease-out forwards;
-        }
-
-        @keyframes explode {
-            to {
-                transform: translate(var(--x), var(--y)) scale(0.5);
-                opacity: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="container">
-  <div class="title">Thư Mời Tham Dự Lễ Tốt Nghiệp</div>
+<audio id="bgMusic" loop>
+    <source src="1.mp3" type="audio/mpeg">
+</audio>
 
-  <a href="show_image.html" class="link">Nhấn vào đây để xem tiếp</a>
-</div>
+<!-- ================= INTRO ================= -->
 
-    <script>
-        const items = [
-            'https://cdn-icons-png.flaticon.com/128/5579/5579570.png', // Mũ tốt nghiệp
-            'https://cdn-icons-png.flaticon.com/128/16126/16126755.png', // Cuộn giấy tốt nghiệp
-            'https://cdn-icons-png.flaticon.com/256/10419/10419725.png', // Gấu tốt nghiệp
-        ];
+<section class="intro" id="intro">
 
-        // Tạo vật thể rơi ngẫu nhiên
-        function createFallingItem() {
-            const item = document.createElement('img');
-            item.src = items[Math.floor(Math.random() * items.length)];
-            item.classList.add('falling-item');
-            item.style.left = Math.random() * 100 + 'vw';
-            item.style.width = '60px';
-            item.style.height = '60px';
-            item.style.animationDuration = (Math.random() * 3 + 3) + 's';
+    <div id="introStars" class="stars"></div>
 
-            item.addEventListener('click', () => {
-                explode(item);
-            });
+    <div class="intro-moon"></div>
 
-            document.body.appendChild(item);
+    <div class="intro-content">
 
-            // Xóa vật thể khi nó ra khỏi màn hình
-            item.addEventListener('animationend', () => {
-                item.remove();
-            });
-        }
+        <div class="intro-small">
+            🐟✦ Helooo là Cáaaaa đây! ✦🐟
+        </div>
 
-        // Tạo hiệu ứng vỡ
-        function explode(element) {
-            const rect = element.getBoundingClientRect();
-            for (let i = 0; i < 5; i++) {
-                const fragment = document.createElement('div');
-                fragment.classList.add('fragment');
-                fragment.style.left = rect.left + rect.width / 2 + 'px';
-                fragment.style.top = rect.top + rect.height / 2 + 'px';
-                fragment.style.backgroundImage = `url(${element.src})`;
-                fragment.style.setProperty('--x', `${Math.random() * 200 - 100}px`);
-                fragment.style.setProperty('--y', `${Math.random() * 200 - 100}px`);
-                document.body.appendChild(fragment);
+        <h1>
+            Hẹn Nhau
+            <span>Trên Cung Trăng</span>
+        </h1>
 
-                fragment.addEventListener('animationend', () => {
-                    fragment.remove();
-                });
-            }
-            element.remove();
-        }
+        <p>Tín hiệu vũ trụ gửi tới Thỏ Ngọc....</p>
 
-        // Tạo vật thể rơi liên tục
-        setInterval(createFallingItem, 600);
-    </script>
+        <button id="openBtn">
+            ✦ MỞ CÁNH CỬA TRUNG THU TẠI ĐÂY  ✦
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SCENE ================= -->
+
+<main class="scene" id="scene">
+
+    <div class="aurora aurora1"></div>
+    <div class="aurora aurora2"></div>
+
+    <div id="stars" class="stars"></div>
+
+    <div id="shootingLayer"></div>
+    <div id="dustLayer"></div>
+
+
+    <!-- ================= MOON ================= -->
+
+    <div class="moon-wrap">
+
+        <div class="moon-halo halo1"></div>
+        <div class="moon-halo halo2"></div>
+
+        <div class="moon">
+
+            <span class="crater crater1"></span>
+            <span class="crater crater2"></span>
+            <span class="crater crater3"></span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CLOUD ================= -->
+
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+
+
+    <!-- ================= LIGHT WIRE ================= -->
+
+    <div class="light-wire">
+
+        <div class="wire-line"></div>
+
+        <span class="bulb b1"></span>
+        <span class="bulb b2"></span>
+        <span class="bulb b3"></span>
+        <span class="bulb b4"></span>
+        <span class="bulb b5"></span>
+        <span class="bulb b6"></span>
+        <span class="bulb b7"></span>
+        <span class="bulb b8"></span>
+
+    </div>
+
+
+    <!-- ================= ĐÈN TREO ================= -->
+
+    <div class="hanging-lantern lantern-left">
+
+        <div class="rope"></div>
+
+        <div class="lantern-glow"></div>
+
+        <div class="lantern-body">
+            <span></span>
+            <span></span>
+            <i class="lantern-spark ls1">✦</i>
+            <i class="lantern-spark ls2">✧</i>
+        </div>
+
+        <div class="tassel"></div>
+
+    </div>
+
+
+    <div class="hanging-lantern lantern-right">
+
+        <div class="rope"></div>
+
+        <div class="lantern-glow"></div>
+
+        <div class="lantern-body orange">
+            <span></span>
+            <span></span>
+            <i class="lantern-spark ls1">✦</i>
+            <i class="lantern-spark ls2">✧</i>
+        </div>
+
+        <div class="tassel"></div>
+
+    </div>
+
+
+    <!-- ================= ĐÈN ÔNG SAO ================= -->
+
+    <div class="star-lantern star-lantern1">
+
+        <div class="star-rope"></div>
+
+        <div class="star-glow"></div>
+
+        <div class="star-body">
+            <span>✦</span>
+        </div>
+
+        <div class="star-tail">
+            <i></i><i></i><i></i>
+        </div>
+
+    </div>
+
+
+    <div class="star-lantern star-lantern2">
+
+        <div class="star-rope"></div>
+
+        <div class="star-glow"></div>
+
+        <div class="star-body">
+            <span>✦</span>
+        </div>
+
+        <div class="star-tail">
+            <i></i><i></i><i></i>
+        </div>
+
+    </div>
+
+
+    <div class="star-lantern star-lantern3">
+
+        <div class="star-rope"></div>
+
+        <div class="star-glow"></div>
+
+        <div class="star-body">
+            <span>✦</span>
+        </div>
+
+        <div class="star-tail">
+            <i></i><i></i><i></i>
+        </div>
+
+    </div>
+
+
+    <!-- ================= MOUNTAINS ================= -->
+
+    <div class="mountain mountain-back"></div>
+    <div class="mountain mountain-middle"></div>
+    <div class="mountain mountain-front"></div>
+
+
+    <!-- ==================================================
+                         CÂY HOA
+    =================================================== -->
+
+    <div class="tree" id="tree">
+
+        <svg viewBox="0 0 650 760">
+
+            <defs>
+
+                <linearGradient id="bark" x1="0" x2="1">
+
+                    <stop offset="0%" stop-color="#151315"/>
+                    <stop offset="20%" stop-color="#4b3430"/>
+                    <stop offset="45%" stop-color="#8c6752"/>
+                    <stop offset="65%" stop-color="#513a35"/>
+                    <stop offset="100%" stop-color="#17151a"/>
+
+                </linearGradient>
+
+            </defs>
+
+
+            <!-- NHÁNH LỚN -->
+
+            <g class="branches">
+
+                <path d="M305 590 C270 480 260 400 270 300"/>
+                <path d="M285 410 C210 335 130 300 20 310"/>
+                <path d="M290 370 C220 290 190 205 170 100"/>
+
+                <path d="M315 380 C380 290 465 240 620 240"/>
+                <path d="M325 430 C410 365 510 350 645 390"/>
+
+                <path d="M305 330 C300 230 330 145 390 45"/>
+
+                <path d="M270 300 C220 245 165 215 95 205"/>
+                <path d="M345 290 C415 210 485 180 560 165"/>
+
+            </g>
+
+
+            <!-- THÂN -->
+
+            <path class="trunk"
+                d="
+                M170 760
+                C210 680 235 600 240 525
+                C245 455 225 395 255 330
+                C275 285 315 270 340 315
+                C375 375 345 450 365 525
+                C390 620 425 685 485 760
+                Z
+                "
+            />
+
+
+            <!-- RỄ -->
+
+            <path class="root"
+                d="
+                M260 600
+                C180 660 95 705 0 750
+                C120 720 215 730 295 760
+                Z
+                "
+            />
+
+            <path class="root"
+                d="
+                M350 600
+                C440 655 535 705 650 750
+                C530 720 440 730 350 760
+                Z
+                "
+            />
+
+            <path class="root thin-root"
+                d="M290 610 C230 680 190 720 120 755"
+            />
+
+            <path class="root thin-root"
+                d="M350 610 C410 680 470 720 550 755"
+            />
+
+        </svg>
+
+
+        <!-- HOA SẼ ĐƯỢC JS TẠO DÀY Ở ĐÂY -->
+
+        <div id="treeBlossoms"></div>
+
+
+        <!-- ĐÈN NHỎ TRÊN CÂY -->
+
+        <span class="tree-light tl1"></span>
+        <span class="tree-light tl2"></span>
+        <span class="tree-light tl3"></span>
+        <span class="tree-light tl4"></span>
+        <span class="tree-light tl5"></span>
+        <span class="tree-light tl6"></span>
+        <span class="tree-light tl7"></span>
+        <span class="tree-light tl8"></span>
+
+    </div>
+
+
+    <!-- ==================================================
+                         THỎ 1 - ÔM BÁNH
+    =================================================== -->
+
+    <div class="cute-rabbit rabbit-cake">
+
+        <div class="rabbit-glow"></div>
+
+        <div class="r-ear left-ear"><i></i></div>
+        <div class="r-ear right-ear"><i></i></div>
+
+        <div class="r-body">
+            <div class="r-belly"></div>
+        </div>
+
+        <div class="r-tail"></div>
+
+        <div class="r-head">
+
+            <span class="r-eye eye1"><i></i></span>
+            <span class="r-eye eye2"><i></i></span>
+
+            <span class="r-brow brow1"></span>
+            <span class="r-brow brow2"></span>
+
+            <span class="r-cheek cheek1"></span>
+            <span class="r-cheek cheek2"></span>
+
+            <span class="r-nose"></span>
+            <span class="r-mouth"></span>
+
+        </div>
+
+        <div class="r-arm arm1"></div>
+        <div class="r-arm arm2"></div>
+
+        <div class="r-foot foot1"></div>
+        <div class="r-foot foot2"></div>
+
+        <div class="rabbit-mooncake">
+            <span>✿</span>
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+                       THỎ 2 - NGỒI NHÌN TRĂNG
+    =================================================== -->
+
+    <div class="cute-rabbit rabbit-looking">
+
+        <div class="rabbit-glow"></div>
+
+        <div class="r-ear left-ear"><i></i></div>
+        <div class="r-ear right-ear"><i></i></div>
+
+        <div class="r-body">
+            <div class="r-belly"></div>
+        </div>
+
+        <div class="r-tail"></div>
+
+        <div class="r-head">
+
+            <span class="r-eye eye1"><i></i></span>
+            <span class="r-eye eye2"><i></i></span>
+
+            <span class="r-cheek cheek1"></span>
+            <span class="r-cheek cheek2"></span>
+
+            <span class="r-nose"></span>
+            <span class="r-mouth"></span>
+
+        </div>
+
+        <div class="r-arm arm1"></div>
+        <div class="r-arm arm2"></div>
+
+        <div class="r-foot foot1"></div>
+        <div class="r-foot foot2"></div>
+
+        <span class="rabbit-hand-star">✦</span>
+
+    </div>
+
+
+    <!-- ==================================================
+                       THỎ 3 - DƯỚI GỐC CÂY
+    =================================================== -->
+
+    <div class="cute-rabbit rabbit-tree">
+
+        <div class="rabbit-glow"></div>
+
+        <div class="r-ear left-ear"><i></i></div>
+        <div class="r-ear right-ear"><i></i></div>
+
+        <div class="r-body">
+            <div class="r-belly"></div>
+        </div>
+
+        <div class="r-tail"></div>
+
+        <div class="r-head">
+
+            <span class="r-eye eye1"><i></i></span>
+            <span class="r-eye eye2"><i></i></span>
+
+            <span class="r-cheek cheek1"></span>
+            <span class="r-cheek cheek2"></span>
+
+            <span class="r-nose"></span>
+            <span class="r-mouth"></span>
+
+        </div>
+
+        <div class="r-arm arm1"></div>
+        <div class="r-arm arm2"></div>
+
+        <div class="r-foot foot1"></div>
+        <div class="r-foot foot2"></div>
+
+        <div class="mini-lantern">
+            <span>✦</span>
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+                      THỎ 4 - NẰM NGỦ
+    =================================================== -->
+
+    <div class="sleep-scene">
+
+        <div class="sleep-glow"></div>
+
+        <div class="sleep-cake"></div>
+
+        <div class="sleep-rabbit">
+
+            <div class="sleep-ear se1"><i></i></div>
+            <div class="sleep-ear se2"><i></i></div>
+
+            <div class="sleep-body"></div>
+
+            <div class="sleep-tail"></div>
+
+            <div class="sleep-head">
+
+                <span class="sleep-eye e1"></span>
+                <span class="sleep-eye e2"></span>
+
+                <span class="sleep-cheek sc1"></span>
+                <span class="sleep-cheek sc2"></span>
+
+                <span class="sleep-nose"></span>
+                <span class="sleep-mouth"></span>
+
+            </div>
+
+        </div>
+
+        <span class="dream dream1">✦</span>
+        <span class="dream dream2">✧</span>
+        <span class="dream dream3">✦</span>
+
+    </div>
+
+
+    <!-- ==================================================
+                            THIỆP
+    =================================================== -->
+
+    <div class="card-area" id="cardArea">
+
+        <div class="card-glow"></div>
+
+        <div class="card-ring ring1"></div>
+        <div class="card-ring ring2"></div>
+
+        <span class="card-orbit co1">✦</span>
+        <span class="card-orbit co2">✧</span>
+        <span class="card-orbit co3">✦</span>
+        <span class="card-orbit co4">✧</span>
+
+
+        <!-- MẶT LỜI CHÚC ĐỨNG YÊN -->
+
+        <div class="wish-card">
+
+            <div class="card-shimmer"></div>
+
+            <span class="corner cs1">✦</span>
+            <span class="corner cs2">✧</span>
+            <span class="corner cs3">✦</span>
+            <span class="corner cs4">✧</span>
+
+            <div class="wish-decoration">
+                ✦　·　✧　·　✦
+            </div>
+
+            <p>
+                Trăng lên rồi, bé Thỏ mau xách lồng đèn đi chơi thôi!🐰🏮
+                Năm nay đón Trung Thu vui vẻ nhóa. Quên hết chuyện buồn, cuộc sống luôn ngập tràn những điều ngọt ngào.
+                Đời có mấy khi đâu mà hững hờ. 😝😝
+            </p>
+
+            <p>
+                Cá chuẩn bị vào kỳ nhập học rồi đấy nhá, sắp bay qua Hogwarts rồi 🐟.
+                Tiện tay “hô biến” một mùa Trung Thu thật vui và ý nghĩa. heheehehee.
+                Mong ánh trăng đêm nay ký gửi mang đến
+                thật nhiều điều may mắn.🍀🍀
+            </p>
+            <p>
+                🦈🐇
+            </p>
+
+            <div class="wish-heart">♡</div>
+
+            <div class="wish-decoration bottom">
+                ✦　·　✧　·　✦
+            </div>
+
+        </div>
+
+
+        <!-- CHỈ MẶT BÌA LẬT -->
+
+        <div class="card-cover">
+
+            <div class="card-shimmer"></div>
+
+            <span class="corner cs1">✦</span>
+            <span class="corner cs2">✧</span>
+            <span class="corner cs3">✦</span>
+            <span class="corner cs4">✧</span>
+
+            <div class="cover-content">
+
+                <div class="small-title">
+                    ✦ MID-AUTUMN FESTIVAL ✦
+                </div>
+
+                <div class="crescent">☾</div>
+
+                <h2>
+                    Hây dô Thỏ ới!!
+                    <span>Trung Thu ở ngay đây nè</span>
+                </h2>
+
+                <div class="divider">
+                    ── ✦ ──
+                </div>
+
+                <div class="tap">
+                    Chạm vào thiệp nhé ♡
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="cardClick"
+            class="card-click"
+            aria-label="Mở thiệp">
+        </button>
+
+    </div>
+
+
+    <!-- ================= HỒ ================= -->
+
+    <div class="lake">
+
+        <div class="moon-reflection"></div>
+
+        <span class="water w1"></span>
+        <span class="water w2"></span>
+        <span class="water w3"></span>
+        <span class="water w4"></span>
+
+    </div>
+
+
+    <div class="ground"></div>
+
+
+    <!-- ================= EFFECT LAYERS ================= -->
+
+    <div id="farLanternLayer"></div>
+    <div id="skyLanternLayer"></div>
+    <div id="fireflyLayer"></div>
+    <div id="petalLayer"></div>
+    <div id="blingLayer"></div>
+
+
+    <!-- ================= CONTROLS ================= -->
+
+    <div class="controls">
+
+        <button id="musicBtn" title="Bật / tắt nhạc">
+            ♫
+        </button>
+
+        <button id="effectBtn" title="Hiệu ứng">
+            ✦
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
