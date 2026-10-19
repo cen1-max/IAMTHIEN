@@ -1,635 +1,258 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>DEAR XIAO GONG ZHU!!! ✦</title>
-
-    <link rel="icon" href="2.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080719">
+  <title>NCT</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪐</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
+  <canvas id="universe" aria-hidden="true"></canvas>
 
-<audio id="bgMusic" loop>
-    <source src="1.mp3" type="audio/mpeg">
-</audio>
+  <div class="vignette"></div>
+  <div class="grain"></div>
+  <div id="cursorGlow"></div>
 
-<!-- ================= INTRO ================= -->
-
-<section class="intro" id="intro">
-
-    <div id="introStars" class="stars"></div>
-
-    <div class="intro-moon"></div>
-
-    <div class="intro-content">
-
-        <div class="intro-small">
-            🐟✦ Helooo là Cáaaaa đây! ✦🐟
-        </div>
-
-        <h1>
-            Hẹn Nhau
-            <span>Trên Cung Trăng</span>
-        </h1>
-
-        <p>Tín hiệu vũ trụ gửi tới Thỏ Ngọc....</p>
-
-        <button id="openBtn">
-            ✦ MỞ CÁNH CỬA TRUNG THU TẠI ĐÂY  ✦
-        </button>
-        <p>Note: Trên Laptop sẽ xinh hơn được một tí 💻</p>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-star">✧</span>
+      CELESTIAL BLOOM
+      <span class="brand-sub">20.10</span>
     </div>
 
-</section>
-
-
-<!-- ================= SCENE ================= -->
-
-<main class="scene" id="scene">
-
-    <div class="aurora aurora1"></div>
-    <div class="aurora aurora2"></div>
-
-    <div id="stars" class="stars"></div>
-
-    <div id="shootingLayer"></div>
-    <div id="dustLayer"></div>
-
-
-    <!-- ================= MOON ================= -->
-
-    <div class="moon-wrap">
-
-        <div class="moon-halo halo1"></div>
-        <div class="moon-halo halo2"></div>
-
-        <div class="moon">
-
-            <span class="crater crater1"></span>
-            <span class="crater crater2"></span>
-            <span class="crater crater3"></span>
-
-        </div>
-
+    <div class="top-actions">
+      <span id="starCounter">✦ 0 / 4</span>
+      <button id="soundBtn" class="icon-button"
+        aria-label="Bật hoặc tắt âm thanh">♫</button>
     </div>
-
-
-    <!-- ================= CLOUD ================= -->
-
-    <div class="cloud cloud1"></div>
-    <div class="cloud cloud2"></div>
-    <div class="cloud cloud3"></div>
-
-
-    <!-- ================= LIGHT WIRE ================= -->
-
-    <div class="light-wire">
-
-        <div class="wire-line"></div>
-
-        <span class="bulb b1"></span>
-        <span class="bulb b2"></span>
-        <span class="bulb b3"></span>
-        <span class="bulb b4"></span>
-        <span class="bulb b5"></span>
-        <span class="bulb b6"></span>
-        <span class="bulb b7"></span>
-        <span class="bulb b8"></span>
-
-    </div>
-
-
-    <!-- ================= ĐÈN TREO ================= -->
-
-    <div class="hanging-lantern lantern-left">
-
-        <div class="rope"></div>
-
-        <div class="lantern-glow"></div>
-
-        <div class="lantern-body">
-            <span></span>
-            <span></span>
-            <i class="lantern-spark ls1">✦</i>
-            <i class="lantern-spark ls2">✧</i>
-        </div>
-
-        <div class="tassel"></div>
-
-    </div>
-
-
-    <div class="hanging-lantern lantern-right">
-
-        <div class="rope"></div>
-
-        <div class="lantern-glow"></div>
-
-        <div class="lantern-body orange">
-            <span></span>
-            <span></span>
-            <i class="lantern-spark ls1">✦</i>
-            <i class="lantern-spark ls2">✧</i>
-        </div>
-
-        <div class="tassel"></div>
-
-    </div>
-
-
-    <!-- ================= ĐÈN ÔNG SAO ================= -->
-
-    <div class="star-lantern star-lantern1">
-
-        <div class="star-rope"></div>
-
-        <div class="star-glow"></div>
-
-        <div class="star-body">
-            <span>✦</span>
-        </div>
-
-        <div class="star-tail">
-            <i></i><i></i><i></i>
-        </div>
-
-    </div>
-
-
-    <div class="star-lantern star-lantern2">
-
-        <div class="star-rope"></div>
-
-        <div class="star-glow"></div>
-
-        <div class="star-body">
-            <span>✦</span>
-        </div>
-
-        <div class="star-tail">
-            <i></i><i></i><i></i>
-        </div>
-
-    </div>
-
-
-    <div class="star-lantern star-lantern3">
-
-        <div class="star-rope"></div>
-
-        <div class="star-glow"></div>
-
-        <div class="star-body">
-            <span>✦</span>
-        </div>
-
-        <div class="star-tail">
-            <i></i><i></i><i></i>
-        </div>
-
-    </div>
-
-
-    <!-- ================= MOUNTAINS ================= -->
-
-    <div class="mountain mountain-back"></div>
-    <div class="mountain mountain-middle"></div>
-    <div class="mountain mountain-front"></div>
-
-
-    <!-- ==================================================
-                         CÂY HOA
-    =================================================== -->
-
-    <div class="tree" id="tree">
-
-        <svg viewBox="0 0 650 760">
-
-            <defs>
-
-                <linearGradient id="bark" x1="0" x2="1">
-
-                    <stop offset="0%" stop-color="#151315"/>
-                    <stop offset="20%" stop-color="#4b3430"/>
-                    <stop offset="45%" stop-color="#8c6752"/>
-                    <stop offset="65%" stop-color="#513a35"/>
-                    <stop offset="100%" stop-color="#17151a"/>
-
-                </linearGradient>
-
-            </defs>
-
-
-            <!-- NHÁNH LỚN -->
-
-            <g class="branches">
-
-                <path d="M305 590 C270 480 260 400 270 300"/>
-                <path d="M285 410 C210 335 130 300 20 310"/>
-                <path d="M290 370 C220 290 190 205 170 100"/>
-
-                <path d="M315 380 C380 290 465 240 620 240"/>
-                <path d="M325 430 C410 365 510 350 645 390"/>
-
-                <path d="M305 330 C300 230 330 145 390 45"/>
-
-                <path d="M270 300 C220 245 165 215 95 205"/>
-                <path d="M345 290 C415 210 485 180 560 165"/>
-
-            </g>
-
-
-            <!-- THÂN -->
-
-            <path class="trunk"
-                d="
-                M170 760
-                C210 680 235 600 240 525
-                C245 455 225 395 255 330
-                C275 285 315 270 340 315
-                C375 375 345 450 365 525
-                C390 620 425 685 485 760
-                Z
-                "
-            />
-
-
-            <!-- RỄ -->
-
-            <path class="root"
-                d="
-                M260 600
-                C180 660 95 705 0 750
-                C120 720 215 730 295 760
-                Z
-                "
-            />
-
-            <path class="root"
-                d="
-                M350 600
-                C440 655 535 705 650 750
-                C530 720 440 730 350 760
-                Z
-                "
-            />
-
-            <path class="root thin-root"
-                d="M290 610 C230 680 190 720 120 755"
-            />
-
-            <path class="root thin-root"
-                d="M350 610 C410 680 470 720 550 755"
-            />
-
+  </header>
+
+  <!-- GIAI ĐOẠN 1: HẠT MẦM VŨ TRỤ -->
+  <section id="birth" class="birth-layer">
+    <div class="birth-content">
+      <div class="eyebrow">✦ A UNIVERSE WAITING TO BLOOM ✦</div>
+
+      <h1>
+        Somewhere in<br>
+        <em>the universe...</em>
+      </h1>
+
+      <p class="birth-intro">
+        Giữa vạn năm ánh sáng, có một tiểu tinh tú
+        đang chờ được elm đánh thức.
+      </p>
+
+      <div class="seed-area">
+        <svg class="seed-rings" viewBox="0 0 300 300"
+          aria-hidden="true">
+          <circle cx="150" cy="150" r="100"/>
+          <circle cx="150" cy="150" r="126"/>
+          <ellipse cx="150" cy="150" rx="142" ry="50"
+            transform="rotate(-35 150 150)"/>
         </svg>
 
-
-        <!-- HOA SẼ ĐƯỢC JS TẠO DÀY Ở ĐÂY -->
-
-        <div id="treeBlossoms"></div>
-
-
-        <!-- ĐÈN NHỎ TRÊN CÂY -->
-
-        <span class="tree-light tl1"></span>
-        <span class="tree-light tl2"></span>
-        <span class="tree-light tl3"></span>
-        <span class="tree-light tl4"></span>
-        <span class="tree-light tl5"></span>
-        <span class="tree-light tl6"></span>
-        <span class="tree-light tl7"></span>
-        <span class="tree-light tl8"></span>
-
-    </div>
-
-
-    <!-- ==================================================
-                         THỎ 1 - ÔM BÁNH
-    =================================================== -->
-
-    <div class="cute-rabbit rabbit-cake">
-
-        <div class="rabbit-glow"></div>
-
-        <div class="r-ear left-ear"><i></i></div>
-        <div class="r-ear right-ear"><i></i></div>
-
-        <div class="r-body">
-            <div class="r-belly"></div>
-        </div>
-
-        <div class="r-tail"></div>
-
-        <div class="r-head">
-
-            <span class="r-eye eye1"><i></i></span>
-            <span class="r-eye eye2"><i></i></span>
-
-            <span class="r-brow brow1"></span>
-            <span class="r-brow brow2"></span>
-
-            <span class="r-cheek cheek1"></span>
-            <span class="r-cheek cheek2"></span>
-
-            <span class="r-nose"></span>
-            <span class="r-mouth"></span>
-
-        </div>
-
-        <div class="r-arm arm1"></div>
-        <div class="r-arm arm2"></div>
-
-        <div class="r-foot foot1"></div>
-        <div class="r-foot foot2"></div>
-
-        <div class="rabbit-mooncake">
-            <span>✿</span>
-        </div>
-
-    </div>
-
-
-    <!-- ==================================================
-                       THỎ 2 - NGỒI NHÌN TRĂNG
-    =================================================== -->
-
-    <div class="cute-rabbit rabbit-looking">
-
-        <div class="rabbit-glow"></div>
-
-        <div class="r-ear left-ear"><i></i></div>
-        <div class="r-ear right-ear"><i></i></div>
-
-        <div class="r-body">
-            <div class="r-belly"></div>
-        </div>
-
-        <div class="r-tail"></div>
-
-        <div class="r-head">
-
-            <span class="r-eye eye1"><i></i></span>
-            <span class="r-eye eye2"><i></i></span>
-
-            <span class="r-cheek cheek1"></span>
-            <span class="r-cheek cheek2"></span>
-
-            <span class="r-nose"></span>
-            <span class="r-mouth"></span>
-
-        </div>
-
-        <div class="r-arm arm1"></div>
-        <div class="r-arm arm2"></div>
-
-        <div class="r-foot foot1"></div>
-        <div class="r-foot foot2"></div>
-
-        <span class="rabbit-hand-star">✦</span>
-
-    </div>
-
-
-    <!-- ==================================================
-                       THỎ 3 - DƯỚI GỐC CÂY
-    =================================================== -->
-
-    <div class="cute-rabbit rabbit-tree">
-
-        <div class="rabbit-glow"></div>
-
-        <div class="r-ear left-ear"><i></i></div>
-        <div class="r-ear right-ear"><i></i></div>
-
-        <div class="r-body">
-            <div class="r-belly"></div>
-        </div>
-
-        <div class="r-tail"></div>
-
-        <div class="r-head">
-
-            <span class="r-eye eye1"><i></i></span>
-            <span class="r-eye eye2"><i></i></span>
-
-            <span class="r-cheek cheek1"></span>
-            <span class="r-cheek cheek2"></span>
-
-            <span class="r-nose"></span>
-            <span class="r-mouth"></span>
-
-        </div>
-
-        <div class="r-arm arm1"></div>
-        <div class="r-arm arm2"></div>
-
-        <div class="r-foot foot1"></div>
-        <div class="r-foot foot2"></div>
-
-        <div class="mini-lantern">
-            <span>✦</span>
-        </div>
-
-    </div>
-
-
-    <!-- ==================================================
-                      THỎ 4 - NẰM NGỦ
-    =================================================== -->
-
-    <div class="sleep-scene">
-
-        <div class="sleep-glow"></div>
-
-        <div class="sleep-cake"></div>
-
-        <div class="sleep-rabbit">
-
-            <div class="sleep-ear se1"><i></i></div>
-            <div class="sleep-ear se2"><i></i></div>
-
-            <div class="sleep-body"></div>
-
-            <div class="sleep-tail"></div>
-
-            <div class="sleep-head">
-
-                <span class="sleep-eye e1"></span>
-                <span class="sleep-eye e2"></span>
-
-                <span class="sleep-cheek sc1"></span>
-                <span class="sleep-cheek sc2"></span>
-
-                <span class="sleep-nose"></span>
-                <span class="sleep-mouth"></span>
-
-            </div>
-
-        </div>
-
-        <span class="dream dream1">✦</span>
-        <span class="dream dream2">✧</span>
-        <span class="dream dream3">✦</span>
-
-    </div>
-
-
-    <!-- ==================================================
-                            THIỆP
-    =================================================== -->
-
-    <div class="card-area" id="cardArea">
-
-        <div class="card-glow"></div>
-
-        <div class="card-ring ring1"></div>
-        <div class="card-ring ring2"></div>
-
-        <span class="card-orbit co1">✦</span>
-        <span class="card-orbit co2">✧</span>
-        <span class="card-orbit co3">✦</span>
-        <span class="card-orbit co4">✧</span>
-
-
-        <!-- MẶT LỜI CHÚC ĐỨNG YÊN -->
-
-        <div class="wish-card">
-
-            <div class="card-shimmer"></div>
-
-            <span class="corner cs1">✦</span>
-            <span class="corner cs2">✧</span>
-            <span class="corner cs3">✦</span>
-            <span class="corner cs4">✧</span>
-
-            <div class="wish-decoration">
-                ✦　·　✧　·　✦
-            </div>
-
-            <p>
-                Trăng lên rồi, bé Thỏ mau xách lồng đèn đi chơi thôi!🐰🏮
-                Năm nay đón Trung Thu vui vẻ nhóa. Quên hết chuyện buồn, cuộc sống luôn ngập tràn những điều ngọt ngào.
-                Đời có mấy khi đâu mà hững hờ. 😝😝
-            </p>
-
-            <p>
-                Cá chuẩn bị vào kỳ nhập học rồi đấy nhá, sắp bay qua Hogwarts rồi 🐟.
-                Tiện tay “hô biến” một mùa Trung Thu thật vui và ý nghĩa. heheehehee.
-                Mong ánh trăng đêm nay ký gửi mang đến
-                thật nhiều điều may mắn.🍀🍀
-            </p>
-            <p>
-                🦈🐇
-            </p>
-
-            <div class="wish-heart">♡</div>
-
-            <div class="wish-decoration bottom">
-                ✦　·　✧　·　✦
-            </div>
-
-        </div>
-
-
-        <!-- CHỈ MẶT BÌA LẬT -->
-
-        <div class="card-cover">
-
-            <div class="card-shimmer"></div>
-
-            <span class="corner cs1">✦</span>
-            <span class="corner cs2">✧</span>
-            <span class="corner cs3">✦</span>
-            <span class="corner cs4">✧</span>
-
-            <div class="cover-content">
-
-                <div class="small-title">
-                    ✦ MID-AUTUMN FESTIVAL ✦
-                </div>
-
-                <div class="crescent">☾</div>
-
-                <h2>
-                    Hây dô Thỏ ới!!
-                    <span>Trung Thu ở ngay đây nè</span>
-                </h2>
-
-                <div class="divider">
-                    ── ✦ ──
-                </div>
-
-                <div class="tap">
-                    Chạm vào thiệp nhé ♡
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <button
-            id="cardClick"
-            class="card-click"
-            aria-label="Mở thiệp">
+        <button id="seed" class="seed"
+          aria-label="Nhấn giữ để đánh thức vũ trụ">
+          <span class="seed-core">✦</span>
         </button>
 
+        <svg class="hold-progress" viewBox="0 0 180 180"
+          aria-hidden="true">
+          <circle class="progress-track"
+            cx="90" cy="90" r="79"/>
+          <circle id="progressRing"
+            class="progress-ring"
+            cx="90" cy="90" r="79"/>
+        </svg>
+      </div>
+
+      <p id="holdHint" class="hold-hint">
+        ✧ Nhấn giữ ngôi sao này dùm tui cái ✧
+      </p>
+
+      <div class="hold-meter">
+        <div id="holdFill"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIAI ĐOẠN 2: THẾ GIỚI VŨ TRỤ -->
+  <main id="cosmos" class="cosmos hidden">
+    <div class="cosmos-heading">
+      <div class="eyebrow">✦ A LITTLE UNIVERSE, JUST FOR YOU ✦</div>
+      <h2>Welcome to <em>your universe</em></h2>
+      <p>
+        Tại đây, mỗi tinh cầu đều giữ một điều tốt đẹp for you.
+      </p>
     </div>
 
+    <div id="solarSystem" class="solar-system">
+      <div class="orbit orbit-1"></div>
+      <div class="orbit orbit-2"></div>
+      <div class="orbit orbit-3"></div>
 
-    <!-- ================= HỒ ================= -->
+      <div id="centralBloom" class="central-bloom">
+        <div class="core-halo"></div>
+        <div class="central-core">✧</div>
+        <span class="core-label">THE HEART OF THE UNIVERSE</span>
+      </div>
 
-    <div class="lake">
+      <button class="planet planet-1" data-planet="0"
+        aria-label="Khám phá tinh cầu Bình Yên">
+        <span class="planet-surface">✿</span>
+        <span class="planet-label">01 · SERENITY</span>
+      </button>
 
-        <div class="moon-reflection"></div>
+      <button class="planet planet-2" data-planet="1"
+        aria-label="Khám phá tinh cầu Giấc Mơ">
+        <span class="planet-surface">✧</span>
+        <span class="planet-label">02 · DREAMS</span>
+      </button>
 
-        <span class="water w1"></span>
-        <span class="water w2"></span>
-        <span class="water w3"></span>
-        <span class="water w4"></span>
+      <button class="planet planet-3" data-planet="2"
+        aria-label="Khám phá tinh cầu Niềm Vui">
+        <span class="planet-surface">❀</span>
+        <span class="planet-label">03 · JOY</span>
+      </button>
 
+      <button class="planet planet-4" data-planet="3"
+        aria-label="Khám phá tinh cầu Yêu Thương">
+        <span class="planet-surface">♡</span>
+        <span class="planet-label">04 · LOVE</span>
+      </button>
     </div>
 
+    <div class="cosmos-footer">
+      <p id="cosmosHint">
+        ✧ Chạm vào bốn ngôi sao trên để thu thập đủ ánh sáng nha mình ✧
+      </p>
 
-    <div class="ground"></div>
+      <button id="constellationBtn"
+        class="outline-button" disabled>
+        MỞ MAP CHÒM SAO RA NÈ!!!
+        <span>↗</span>
+      </button>
+    </div>
+  </main>
 
+  <!-- THÔNG ĐIỆP TINH CẦU -->
+  <div id="planetPanel" class="planet-panel hidden"
+    role="dialog" aria-modal="true"
+    aria-labelledby="planetTitle">
 
-    <!-- ================= EFFECT LAYERS ================= -->
+    <div class="panel-backdrop" id="panelBackdrop"></div>
 
-    <div id="farLanternLayer"></div>
-    <div id="skyLanternLayer"></div>
-    <div id="fireflyLayer"></div>
-    <div id="petalLayer"></div>
-    <div id="blingLayer"></div>
+    <article class="planet-card">
+      <button id="closePlanet" class="close-button"
+        aria-label="Đóng thông điệp">×</button>
 
+      <div class="card-topline">A MESSAGE FROM THE STARS</div>
+      <div id="planetSymbol" class="card-symbol">✿</div>
+      <div id="planetNumber" class="card-number">01 / 04</div>
 
-    <!-- ================= CONTROLS ================= -->
+      <h3 id="planetTitle">Serenity</h3>
+      <p id="planetMessage"></p>
 
-    <div class="controls">
+      <div class="card-bottom">✦ &nbsp; FOR YOU &nbsp; ✦</div>
+    </article>
+  </div>
 
-        <button id="musicBtn" title="Bật / tắt nhạc">
-            ♫
-        </button>
+  <!-- CHÒM SAO TƯƠNG TÁC -->
+  <section id="constellation" class="constellation-layer hidden">
+    <button id="closeConstellation" class="back-button">
+      ← TRỞ VỀ VŨ TRỤ
+    </button>
 
-        <button id="effectBtn" title="Hiệu ứng">
-            ✦
-        </button>
-
+    <div class="constellation-heading">
+      <div class="eyebrow">✦ WRITTEN IN THE STARS ✦</div>
+      <h2>Connect the <em>stars</em></h2>
+      <p>
+        Chạm vào các ngôi sao theo thứ tự từ 1 đến 7.
+        Hãy xem điều gì đang được viết trên bầu trời.
+      </p>
     </div>
 
-</main>
+    <div class="star-map" id="starMap">
+      <svg id="constellationLines" viewBox="0 0 600 420"
+        preserveAspectRatio="xMidYMid meet"
+        aria-hidden="true">
+        <path id="drawnPath" d=""/>
+      </svg>
 
+      <button class="map-star" data-star="0"
+        style="--x:300;--y:344">1</button>
+      <button class="map-star" data-star="1"
+        style="--x:115;--y:205">2</button>
+      <button class="map-star" data-star="2"
+        style="--x:172;--y:87">3</button>
+      <button class="map-star" data-star="3"
+        style="--x:300;--y:153">4</button>
+      <button class="map-star" data-star="4"
+        style="--x:428;--y:87">5</button>
+      <button class="map-star" data-star="5"
+        style="--x:485;--y:205">6</button>
+      <button class="map-star" data-star="6"
+        style="--x:300;--y:344">7</button>
+    </div>
 
-<script src="script.js"></script>
+    <p id="starHint" class="star-hint">
+      ✧ Hành trình bắt đầu từ ngôi sao số 1 ✧
+    </p>
 
+    <button id="bloomBtn" class="bloom-button hidden">
+      ✦ ĐÁNH THỨC ĐÓA HOA THIÊN HÀ ✦
+    </button>
+  </section>
+
+  <!-- FINAL BLOOM -->
+  <section id="finalBloom" class="final-layer hidden">
+    <div class="final-nebula"></div>
+
+    <div class="cosmic-flower" id="cosmicFlower">
+      <div class="flower-aura"></div>
+      <div id="petalContainer" class="petal-container"></div>
+      <div class="flower-center">
+        <span>20</span>
+        <i>✦</i>
+        <span>10</span>
+      </div>
+    </div>
+
+    <div class="final-copy">
+      <div class="eyebrow">✦ THIS UNIVERSE BLOOMS FOR YOU ✦</div>
+      <h2>Happy <em>20/10</em></h2>
+      <div class="final-divider">✧ ───── ♡ ───── ✧</div>
+
+      <p class="final-wish">
+        Hì hi. Trong vô vàn những vì sao, mong em luôn tìm thấy
+        ánh sáng phù hợp của riêng mình.
+        <br><br>
+        Chúc những ngày của elm có thật nhiều niềm vui,
+        cười nhiều nhé, khóc huhu xấu lắm í.
+        <br><br>
+        Chúc elm một ngày 20/10
+        thật rực rỡ. Hông riêng hôm nay,
+        mong elm mãi luôn được hạnh phúc theo cách em muốn.
+      </p>
+
+      <p class="final-signature">
+        A little universe, made just for you ♡
+      </p>
+
+      <button id="restartBtn" class="outline-button">
+        KHÁM PHÁ LẠI VŨ TRỤ ↗
+      </button>
+    </div>
+  </section>
+
+  <div id="notification" class="notification"
+    role="status" aria-live="polite"></div>
 </body>
 </html>
